@@ -11,6 +11,7 @@
 
 
     <application
+        android:name=".MTGOEventsApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -23,7 +24,7 @@
         tools:targetApi="31">
 
         <!-- MainActivity Declaration -->
-        <activity android:name=".MainActivity"
+        <activity android:name=".presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,11 +32,17 @@
             </intent-filter>
         </activity>
 
+        <!-- New Modern Monitoring Service -->
         <service
-            android:name=".ScrapingService"
+            android:name=".service.MonitoringService"
             android:foregroundServiceType="dataSync"
-            android:permission="android.permission.FOREGROUND_SERVICE" >
-        </service>
+            android:permission="android.permission.FOREGROUND_SERVICE" />
+
+        <!-- Old Service (can be removed later) -->
+        <service
+            android:name=".service.ScrapingService"
+            android:foregroundServiceType="dataSync"
+            android:permission="android.permission.FOREGROUND_SERVICE" />
 
     </application>
 
